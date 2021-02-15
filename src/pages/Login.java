@@ -45,4 +45,9 @@ public class Login {
         btnLogin.click();
     }
 
+    public void clickForgotPass()
+    {
+        lnkForgotPass.click();
+    }
+
 }
