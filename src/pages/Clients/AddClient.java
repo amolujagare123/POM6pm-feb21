@@ -1,0 +1,131 @@
+package pages.Clients;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+public class AddClient {
+
+    @FindBy(xpath = "//input[@id='client_name']")
+    WebElement cName;
+
+    @FindBy (xpath = "//input[@id='client_surname']")
+    WebElement cSurname;
+
+    @FindBy (xpath = "//input[@id='client_address_1']")
+    WebElement cAdd1;
+
+    @FindBy (xpath = "//input[@id='client_address_2']")
+    WebElement cAdd2;
+
+    @FindBy (xpath = "//input[@id='client_city']")
+    WebElement cCity;
+
+    @FindBy (xpath = "//input[@id='client_state']")
+    WebElement cState;
+
+    @FindBy (xpath = "//input[@id='client_zip']")
+    WebElement cZip;
+
+    @FindBy (xpath = "//input[@id='client_phone']")
+    WebElement cPhone;
+
+    @FindBy (xpath = "//input[@id='client_fax']")
+    WebElement cFax;
+
+    @FindBy (xpath = "//input[@id='client_mobile']")
+    WebElement cMobile;
+
+    @FindBy (xpath = "//input[@id='client_email']")
+    WebElement cEmail;
+
+    @FindBy (xpath = "//input[@id='client_web']")
+    WebElement cWeb;
+
+    @FindBy (xpath = "//input[@id='client_vat_id']")
+    WebElement cVat;
+
+    @FindBy (xpath = "//input[@id='client_tax_code']")
+    WebElement cTax;
+
+
+    public AddClient(WebDriver driver)
+    {
+        PageFactory.initElements(driver,this);
+    }
+
+    public void setcName(String name)
+    {
+        cName.sendKeys(name);
+    }
+
+    public void setcSurname(String surname)
+    {
+        cSurname.sendKeys(surname);
+    }
+
+
+    public void setcAdd1(String add1)
+    {
+        cAdd1.sendKeys(add1);
+    }
+
+    public void setcAdd2(String add2)
+    {
+        cAdd2.sendKeys(add2);
+    }
+
+    public void setcCity(String city)
+    {
+        cCity.sendKeys(city);
+    }
+
+    public void setcState(String state)
+    {
+        cState.sendKeys(state);
+    }
+
+    public void setcZip(String zip)
+    {
+        cZip.sendKeys(zip);
+    }
+
+    public void setcPhone(String phone)
+    {
+        cPhone.sendKeys(phone);
+    }
+
+    public void setcFax(String fax)
+    {
+        cFax.sendKeys(fax);
+    }
+
+    public void setcMobile(String mobile)
+    {
+        cMobile.sendKeys(mobile);
+    }
+
+    public void setcEmail(String email)
+    {
+        cEmail.sendKeys(email);
+    }
+
+    public void setcWeb(String web)
+    {
+        cWeb.sendKeys(web);
+    }
+
+    public void setcVat(String vat)
+    {
+        cVat.sendKeys(vat);
+    }
+
+    public void setcTax(String tax)
+    {
+        cTax.sendKeys(tax);
+    }
+
+
+
+}
