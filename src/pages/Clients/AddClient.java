@@ -1,5 +1,6 @@
 package pages.Clients;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -49,9 +50,14 @@ public class AddClient {
     @FindBy (xpath = "//input[@id='client_tax_code']")
     WebElement cTax;
 
+    @FindBy (xpath = "//button[normalize-space()='Save']")
+    WebElement btnSave;
+
+
 
     public AddClient(WebDriver driver)
     {
+        this.driver = driver;
         PageFactory.initElements(driver,this);
     }
 
@@ -59,6 +65,42 @@ public class AddClient {
     {
         cName.sendKeys(name);
     }
+
+    public void clickSave()
+    {
+        btnSave.click();
+    }
+
+    @FindBy (id="select2-client_language-container")
+    WebElement containerLanguage;
+
+    @FindBy (xpath = "//input[@type='search']")
+    WebElement searchBox;
+
+    WebDriver driver;
+
+    public void setLanguage(String language)
+    {
+        containerLanguage.click();
+        searchBox.sendKeys(language);
+
+        driver.findElement(By.xpath("//li[normalize-space()='"+language+"']")).click();
+
+    }
+
+
+    @FindBy (id="select2-client_country-container")
+    WebElement containerCountry;
+
+    public void setCountry(String country)
+    {
+        containerCountry.click();
+        searchBox.sendKeys(country);
+        driver.findElement(By.xpath("//li[normalize-space()='"+country+"']")).click();
+
+    }
+
+
 
     public void setcSurname(String surname)
     {
