@@ -1,6 +1,7 @@
 package regression.clients;
 
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import pages.Clients.AddClient;
 import pages.Login;
@@ -9,10 +10,11 @@ import util.OpenUrl;
 
 import java.io.IOException;
 
+import static util.ForDataProvider.myData;
 import static utilities.ConfigReader.getPassword;
 import static utilities.ConfigReader.getUserName;
 
-public class AddClientTest extends OpenUrl {
+public class AddClientTestDataProvider extends OpenUrl {
 
     @BeforeClass
     public void doLogin() throws IOException {
@@ -23,7 +25,7 @@ public class AddClientTest extends OpenUrl {
     }
 
 
-    @Test
+    @Test (dataProvider = "getData")
     public void addClientTest()
     // to test the functionality of save button for all valid inputs
     {
@@ -53,10 +55,11 @@ public class AddClientTest extends OpenUrl {
 
         addClient.clickSave();
 
+    }
 
+    @DataProvider
+    public Object[][] getData() throws IOException {
 
-
-
-
+        return myData("","");
     }
 }

@@ -1,6 +1,7 @@
 package pages.Clients;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -100,11 +101,32 @@ public class AddClient {
 
     }
 
+    @FindBy (id= "select2-client_gender-container")
+    WebElement containerGender;
+
+    public void setGender(String gender)
+    {
+        containerGender.click();
+
+        driver.findElement(By.xpath("//li[normalize-space()='"+gender+"']")).click();
+    }
 
 
     public void setcSurname(String surname)
     {
         cSurname.sendKeys(surname);
+    }
+
+    @FindBy (xpath = "//input[@name='client_birthdate']")
+    WebElement cBirthdate;
+
+    public void setcBirthdate(String dateStr)
+    {
+       // cBirthdate.sendKeys(dateStr);
+
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+
+        js.executeScript("arguments[0].setAttribute('value','"+dateStr+"')",cBirthdate);
     }
 
 
