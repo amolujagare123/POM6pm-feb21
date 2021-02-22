@@ -1,5 +1,7 @@
 package regression.clients;
 
+import org.openqa.selenium.By;
+import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -26,40 +28,54 @@ public class AddClientTestDataProvider extends OpenUrl {
 
 
     @Test (dataProvider = "getData")
-    public void addClientTest()
+    public void addClientTest(String name,String surname,String add1,
+                              String add2,String language,String city,
+                              String state,String zip,String country,
+                              String gender,String birthdate,String phone,
+                              String fax,String mobile,String email,
+                              String web,String vat,String tax,
+                              String expected,String xpathActual)
     // to test the functionality of save button for all valid inputs
     {
         Menu menu = new Menu(driver);
         menu.clickAddclient();
-
         AddClient addClient = new AddClient(driver);
-
-        addClient.setcName("amol");
-        addClient.setcSurname("ujagare");
-        addClient.setcAdd1("abcd");
-        addClient.setLanguage("Thai");
-        addClient.setcAdd2("xyz");
-        addClient.setcCity("Pune");
-        addClient.setcState("MH");
-        addClient.setcZip("9090");
-        addClient.setCountry("Mexico");
-        addClient.setGender("Female");
-        addClient.setcBirthdate("05/21/1983");
-        addClient.setcPhone("989898");
-        addClient.setcFax("7878878");
-        addClient.setcMobile("898989");
-        addClient.setcEmail("a@b.com");
-        addClient.setcWeb("www.abc.com");
-        addClient.setcVat("88989");
-        addClient.setcTax("98989");
+        addClient.setcName(name);
+        addClient.setcSurname(surname);
+        addClient.setcAdd1(add1);
+        addClient.setcAdd2(add2);
+        addClient.setLanguage(language);
+        addClient.setcCity(city);
+        addClient.setcState(state);
+        addClient.setcZip(zip);
+        addClient.setCountry(country);
+        addClient.setGender(gender);
+        addClient.setcBirthdate(birthdate);
+        addClient.setcPhone(phone);
+        addClient.setcFax(fax);
+        addClient.setcMobile(mobile);
+        addClient.setcEmail(email);
+        addClient.setcWeb(web);
+        addClient.setcVat(vat);
+        addClient.setcTax(tax);
 
         addClient.clickSave();
+
+        String actual = "";
+        try {
+            actual = driver.findElement(By.xpath(xpathActual)).getText();
+        }
+        catch (Exception e)
+        {
+
+        }
+        Assert.assertEquals(actual,expected,"incorrect message");
 
     }
 
     @DataProvider
     public Object[][] getData() throws IOException {
 
-        return myData("","");
+        return myData("Data/myData.xlsx","addClient");
     }
 }
